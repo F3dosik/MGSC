@@ -1,0 +1,302 @@
+{
+  "main": {
+    "id": "b8bff9885d9ea7ef",
+    "type": "split",
+    "children": [
+      {
+        "id": "7504609560d1b9b0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b463a8a03dab724f",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "terminal:terminal",
+              "state": {
+                "terminal:terminal": {
+                  "cwd": "/home/fedos/Study/coursework/MGSC",
+                  "focus": false,
+                  "profile": {
+                    "args": [],
+                    "executable": "/bin/sh",
+                    "followTheme": true,
+                    "name": "",
+                    "platforms": {
+                      "linux": true
+                    },
+                    "pythonExecutable": "python3",
+                    "restoreHistory": false,
+                    "rightClickAction": "copyPaste",
+                    "successExitCodes": [
+                      "0",
+                      "SIGINT",
+                      "SIGTERM"
+                    ],
+                    "terminalOptions": {
+                      "documentOverride": null
+                    },
+                    "type": "integrated",
+                    "useWin32Conhost": true
+                  },
+                  "profileSourceId": "linuxIntegratedDefault",
+                  "serial": null
+                }
+              },
+              "pinned": true,
+              "icon": "terminal",
+              "title": "Terminal: ⠂ Russian language conversation setup"
+            }
+          },
+          {
+            "id": "3f330d56667a6561",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "terminal:terminal",
+              "state": {
+                "terminal:terminal": {
+                  "cwd": "/home/fedos/Study/coursework/MGSC",
+                  "focus": false,
+                  "profile": {
+                    "args": [],
+                    "executable": "/bin/sh",
+                    "followTheme": true,
+                    "name": "",
+                    "platforms": {
+                      "linux": true
+                    },
+                    "pythonExecutable": "python3",
+                    "restoreHistory": false,
+                    "rightClickAction": "copyPaste",
+                    "successExitCodes": [
+                      "0",
+                      "SIGINT",
+                      "SIGTERM"
+                    ],
+                    "terminalOptions": {
+                      "documentOverride": null
+                    },
+                    "type": "integrated",
+                    "useWin32Conhost": true
+                  },
+                  "profileSourceId": "linuxIntegratedDefault",
+                  "serial": null
+                }
+              },
+              "pinned": true,
+              "icon": "terminal",
+              "title": "Terminal: fedos@BigFriend: ~/Study/coursework/MGSC"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "831fdcf58649a702",
+    "type": "split",
+    "children": [
+      {
+        "id": "55bec97403b295a6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "99e15c654508c514",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Файловый менеджер"
+            }
+          },
+          {
+            "id": "f30c1c7bdc2a3b7c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Поиск"
+            }
+          },
+          {
+            "id": "c531a33bfe81bd49",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Закладки"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200,
+    "collapsed": true
+  },
+  "right": {
+    "id": "07d9bcf8e59b9910",
+    "type": "split",
+    "children": [
+      {
+        "id": "7141ac0e03367f37",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cf0c5bf33e7677f3",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Обратные ссылки"
+            }
+          },
+          {
+            "id": "69c6ea2a1b5c45e7",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Исходящие ссылки"
+            }
+          },
+          {
+            "id": "54daf12df03d5620",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Теги"
+            }
+          },
+          {
+            "id": "0f13e6d0c73d0ad7",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Все свойства"
+            }
+          },
+          {
+            "id": "11f8f16d1c58e193",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Структура"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Меню быстрого перехода": false,
+      "graph:Граф": false,
+      "canvas:Создать новый холст": false,
+      "daily-notes:Сегодняшняя заметка": false,
+      "templates:Вставить шаблон": false,
+      "command-palette:Открыть палитру команд": false,
+      "bases:Создать новую базу": false,
+      "terminal:Open terminal": false
+    }
+  },
+  "active": "b463a8a03dab724f",
+  "lastOpenFiles": [
+    "knowledge-base/raw/coursework-2/thesis_report_main.tex.tmp.23153.bcb60340ba1c",
+    "research/venv/lib/python3.12/site-packages/matplotlib-3.10.9.dist-info/REQUESTED",
+    "research/venv/lib/python3.12/site-packages/matplotlib-3.10.9.dist-info/INSTALLER",
+    "research/venv/lib/python3.12/site-packages/__pycache__/pylab.cpython-312.pyc",
+    "research/venv/lib/python3.12/site-packages/mpl_toolkits/mplot3d/tests/__pycache__/test_legend3d.cpython-312.pyc",
+    "research/venv/lib/python3.12/site-packages/mpl_toolkits/mplot3d/tests/__pycache__/test_axes3d.cpython-312.pyc",
+    "research/venv/lib/python3.12/site-packages/mpl_toolkits/mplot3d/tests/__pycache__/test_art3d.cpython-312.pyc",
+    "research/venv/lib/python3.12/site-packages/mpl_toolkits/mplot3d/tests/__pycache__/conftest.cpython-312.pyc",
+    "research/venv/lib/python3.12/site-packages/mpl_toolkits/mplot3d/tests/__pycache__/__init__.cpython-312.pyc",
+    "research/venv/lib/python3.12/site-packages/mpl_toolkits/mplot3d/tests/__pycache__",
+    "research/venv/lib/python3.12/site-packages/mpl_toolkits/mplot3d/__pycache__/proj3d.cpython-312.pyc",
+    "research/venv/lib/python3.12/site-packages/matplotlib/mpl-data/sample_data/logo2.png",
+    "research/venv/lib/python3.12/site-packages/matplotlib/mpl-data/sample_data/grace_hopper.jpg",
+    "research/venv/lib/python3.12/site-packages/matplotlib/mpl-data/sample_data/Minduka_Present_Blue_Pack.png",
+    "research/venv/lib/python3.12/site-packages/matplotlib/mpl-data/images/zoom_to_rect_large.png",
+    "research/venv/lib/python3.12/site-packages/matplotlib/mpl-data/images/zoom_to_rect.svg",
+    "research/venv/lib/python3.12/site-packages/matplotlib/mpl-data/images/zoom_to_rect.png",
+    "research/venv/lib/python3.12/site-packages/matplotlib/mpl-data/images/zoom_to_rect-symbolic.svg",
+    "research/venv/lib/python3.12/site-packages/matplotlib/mpl-data/images/subplots_large.png",
+    "research/venv/lib/python3.12/site-packages/matplotlib/mpl-data/images/subplots.svg",
+    "research/venv/lib/python3.12/site-packages/matplotlib/mpl-data/images/subplots.png",
+    "research/venv/lib/python3.12/site-packages/numpy-2.4.4.dist-info/licenses/numpy/_core/src/npysort/x86-simd-sort/LICENSE.md",
+    "research/venv/lib/python3.12/site-packages/numpy-2.4.4.dist-info/licenses/numpy/random/src/splitmix64/LICENSE.md",
+    "research/venv/lib/python3.12/site-packages/numpy-2.4.4.dist-info/licenses/numpy/random/src/sfc64/LICENSE.md",
+    "research/venv/lib/python3.12/site-packages/numpy-2.4.4.dist-info/licenses/numpy/random/src/philox/LICENSE.md",
+    "research/venv/lib/python3.12/site-packages/numpy-2.4.4.dist-info/licenses/numpy/random/src/pcg64/LICENSE.md",
+    "research/venv/lib/python3.12/site-packages/numpy-2.4.4.dist-info/licenses/numpy/random/src/mt19937/LICENSE.md",
+    "research/venv/lib/python3.12/site-packages/numpy-2.4.4.dist-info/licenses/numpy/random/src/distributions/LICENSE.md",
+    "research/venv/lib/python3.12/site-packages/numpy-2.4.4.dist-info/licenses/numpy/fft/pocketfft/LICENSE.md",
+    "research/venv/lib/python3.12/site-packages/numpy-2.4.4.dist-info/licenses/numpy/random/LICENSE.md",
+    "research/venv/lib/python3.12/site-packages/numpy/random/LICENSE.md",
+    "research/venv/lib/python3.12/site-packages/pyparsing/ai/best_practices.md",
+    "knowledge-base/log.md",
+    "knowledge-base/wiki/entities/reference-sboxes-metrics.md",
+    "knowledge-base/wiki/entities/linear-cryptanalysis.md",
+    "knowledge-base/wiki/entities/mobius-transform.md",
+    "knowledge-base/index.md",
+    "knowledge-base/wiki/entities/attacks-overview.md",
+    "knowledge-base/wiki/entities/algebraic-attack.md",
+    "knowledge-base/wiki/entities/higher-order-differential-attack.md",
+    "knowledge-base/wiki/entities/differential-cryptanalysis.md",
+    "knowledge-base/wiki/entities/sm4-sbox.md",
+    "knowledge-base/wiki/entities/algebraic-immunity.md",
+    "knowledge-base/wiki/entities/algebraic-degree.md",
+    "knowledge-base/wiki/entities/aes-sbox.md",
+    "knowledge-base/wiki/entities/camellia-sbox.md"
+  ]
+}
