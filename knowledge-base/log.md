@@ -12,6 +12,22 @@
 - Тематика: криптография — булевы функции и S-боксы (контекст курсовой MGSC).
 - Категории wiki: пока только `entities/`. По мере роста можно добавить `concepts/`, `sources/`, `comparisons/`.
 
+## [2026-05-15] meta | Multi-start и эмпирические наблюдения SA
+- Создана [[multi-start]] — концепция multi-start метаэвристик, формула $1 - (1-p)^N$ для best-of-N, parallelization pattern в Go, сравнение с parallel tempering.
+- Создана [[sa-empirical-observations]] — фиксация результатов калибровки: cost stability ~2.7e+08 для random, $T_0 \sim 1.5 \cdot 10^6$ из random vs $1.5 \cdot 10^7$ из AES, объяснение «локальный минимум даёт большие $|\Delta E|$», рекомендованные стартовые параметры SA.
+- Пользователь реализовал `ParallelMultiStartSA` в `generate/annealing.go` по предложенному паттерну (sync.WaitGroup, math/rand/v2). Задача закрыта в [[backlog]].
+
+## [2026-05-15] meta | Страница t0-calibration (калибровка начальной температуры)
+- Создана [[t0-calibration]] — детальный разбор: зачем нужна калибровка, концепция acceptance rate $p_0$, вывод формулы $T_0 = -\langle\Delta E\rangle / \ln p_0$, алгоритм с инволютивным откатом, edge cases, альтернативы.
+- Обновлён [[index]].
+
+## [2026-05-15] meta | Страница SA (теория, термины) + hill-climbing стаб
+- Создана [[simulated-annealing]] — общая теория SA: физическая метафора, термины (состояние, окрестность, температура, Metropolis, schedule, best-seen), алгоритм псевдокодом, гиперпараметры с эмпирическими правилами выбора, сравнение с HC.
+- Создан стаб [[hill-climbing]] со связью с SA через $T=0$ и его ролью baseline в проекте.
+- Источники: Kirkpatrick 1983 (основа SA), Russell-Norvig (HC).
+- Специфика SA для S-блоков (мутация swap, cost CJS) — остаётся в [[fitness-function-sbox]] и в будущей странице sa-for-sboxes.
+- Обновлён [[index]]; добавлено пользователем feedback-правило в memory: длинные объяснения с математикой писать в wiki, не в чат.
+
 ## [2026-05-15] ingest | ldc_tutorial.pdf (Heys 2002) → теория LC и DC
 - Прочитан целиком (33 стр., 2 захода): Howard M. Heys "A Tutorial on Linear and Differential Cryptanalysis" (Memorial University of Newfoundland, 2002).
 - Из tutorial взяли только S-блочную часть: §3.1 (linear probability bias), §3.2 (Piling-Up Lemma), §3.3 (LAT свойства), §3.6 (active S-boxes, $N_L \approx 1/\varepsilon^2$, linear hulls); §4.1 (idea DC), §4.2 (DDT свойства), §4.5 ($N_D \approx c/p_D$, differentials); §5 (advanced — упоминания higher-order, truncated, impossible).

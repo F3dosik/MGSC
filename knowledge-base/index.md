@@ -66,6 +66,11 @@
 
 ### Генерация
 
+- [[simulated-annealing|Имитация отжига (SA)]] — метаэвристика; термины (T, cost, Metropolis, schedule), алгоритм, гиперпараметры.
+- [[hill-climbing|Hill Climbing]] — частный случай SA при T=0; baseline для проверки cost-функции.
+- [[t0-calibration|Калибровка $T_0$]] — формула $T_0 = -\langle\|\Delta E\|\rangle / \ln p_0$, целевая acceptance rate, алгоритм с инволютивным откатом.
+- [[multi-start|Multi-start метаэвристики]] — $N$ независимых запусков, embarrassingly parallel, формула $1 - (1-p)^N$.
+- [[sa-empirical-observations|Эмпирические наблюдения SA]] — реальные данные: cost stability, $T_0$ из random vs AES, стартовые параметры SA.
 - [[fitness-function-sbox|Fitness-функция для S-блоков]] — взвешенная сумма штрафов за нарушения порогов.
 
 ## Источники (raw/)

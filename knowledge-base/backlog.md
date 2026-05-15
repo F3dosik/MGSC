@@ -18,8 +18,8 @@
 
 ## База знаний — приоритет 1 (нужно для генератора)
 
-- [ ] Ingest источника по **simulated annealing** для S-блоков
-      Acceptance: страница `wiki/entities/simulated-annealing.md` с алгоритмом, расписанием температуры, мутацией (swap), известными результатами. Источники: Kirkpatrick et al. 1983 (классика SA); Clark/Jacob/Stepney 2005 (SA для S-блоков). Оба в библиографии тезиса.
+- [ ] Ingest **Clark-Jacob-Stepney 2005** — специфика SA для S-блоков
+      Acceptance: страница `wiki/entities/sa-for-sboxes.md` со специфической мутацией (swap), их cost-функцией $\sum ||W|-X|^R$, расписанием температуры использованным в работе, экспериментальными результатами NL для $n=8$. Общая теория SA уже есть в [[simulated-annealing]].
 - [ ] Ingest источника по **бент-функциям** (Токарева 2011)
       Acceptance: страница `wiki/entities/bent-functions.md` — что это, теорема о существовании только при чётном $n$, потолок $N = 2^{n-1} - 2^{n/2-1}$, несбалансированность → почему недостижимо для биективных S-блоков.
 
@@ -33,6 +33,11 @@
       Acceptance: расширить [[differential-uniformity]] концепцией APN ($\delta = 2$), теоремами о минимальных $\delta$ для биективных $n=2k$ (нижняя граница 4 для чётных $n$, открытая проблема existence биективных APN для $n=8$). Код уже есть (`sbox/ddt.go`).
 - [ ] Ingest **Carlet 2021** (Boolean Functions for Cryptography and Coding Theory) — стандартная монография, ссылка в библиографии обеих курсовых
       Acceptance: страница `wiki/entities/carlet-2021-reference.md` со ссылками на главы; обновить страницы метрик с цитатами.
+
+## Код — параллелизация (для 16-ядерной машины)
+
+- [ ] (Advanced) Parallel Tempering
+      Acceptance: $N$ SA с разными $T$, периодический обмен состояниями по Metropolis. Принципиально другой алгоритм; не блокирует multi-start. Источники: Earl & Deem 2005.
 
 ## Код — приоритет 1 (генератор)
 

@@ -8,6 +8,20 @@
         "type": "tabs",
         "children": [
           {
+            "id": "ca64242d45479f59",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "knowledge-base/wiki/entities/simulated-annealing.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "simulated-annealing"
+            }
+          },
+          {
             "id": "b463a8a03dab724f",
             "type": "leaf",
             "pinned": true,
@@ -45,51 +59,39 @@
               },
               "pinned": true,
               "icon": "terminal",
-              "title": "Terminal: ⠂ Russian language conversation setup"
+              "title": "Terminal: ⠐ Russian language conversation setup"
             }
           },
           {
-            "id": "3f330d56667a6561",
+            "id": "fb02c53ca2581e80",
             "type": "leaf",
-            "pinned": true,
             "state": {
-              "type": "terminal:terminal",
+              "type": "markdown",
               "state": {
-                "terminal:terminal": {
-                  "cwd": "/home/fedos/Study/coursework/MGSC",
-                  "focus": false,
-                  "profile": {
-                    "args": [],
-                    "executable": "/bin/sh",
-                    "followTheme": true,
-                    "name": "",
-                    "platforms": {
-                      "linux": true
-                    },
-                    "pythonExecutable": "python3",
-                    "restoreHistory": false,
-                    "rightClickAction": "copyPaste",
-                    "successExitCodes": [
-                      "0",
-                      "SIGINT",
-                      "SIGTERM"
-                    ],
-                    "terminalOptions": {
-                      "documentOverride": null
-                    },
-                    "type": "integrated",
-                    "useWin32Conhost": true
-                  },
-                  "profileSourceId": "linuxIntegratedDefault",
-                  "serial": null
-                }
+                "file": "knowledge-base/wiki/entities/t0-calibration.md",
+                "mode": "preview",
+                "source": false
               },
-              "pinned": true,
-              "icon": "terminal",
-              "title": "Terminal: fedos@BigFriend: ~/Study/coursework/MGSC"
+              "icon": "lucide-file",
+              "title": "t0-calibration"
+            }
+          },
+          {
+            "id": "6f434e66dd7fd79b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "knowledge-base/wiki/entities/multi-start.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "multi-start"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -146,8 +148,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "07d9bcf8e59b9910",
@@ -252,17 +253,39 @@
   },
   "active": "b463a8a03dab724f",
   "lastOpenFiles": [
-    "knowledge-base/raw/coursework-2/thesis_report_main.tex.tmp.23153.bcb60340ba1c",
-    "research/venv/lib/python3.12/site-packages/matplotlib-3.10.9.dist-info/REQUESTED",
-    "research/venv/lib/python3.12/site-packages/matplotlib-3.10.9.dist-info/INSTALLER",
-    "research/venv/lib/python3.12/site-packages/__pycache__/pylab.cpython-312.pyc",
-    "research/venv/lib/python3.12/site-packages/mpl_toolkits/mplot3d/tests/__pycache__/test_legend3d.cpython-312.pyc",
-    "research/venv/lib/python3.12/site-packages/mpl_toolkits/mplot3d/tests/__pycache__/test_axes3d.cpython-312.pyc",
-    "research/venv/lib/python3.12/site-packages/mpl_toolkits/mplot3d/tests/__pycache__/test_art3d.cpython-312.pyc",
-    "research/venv/lib/python3.12/site-packages/mpl_toolkits/mplot3d/tests/__pycache__/conftest.cpython-312.pyc",
-    "research/venv/lib/python3.12/site-packages/mpl_toolkits/mplot3d/tests/__pycache__/__init__.cpython-312.pyc",
-    "research/venv/lib/python3.12/site-packages/mpl_toolkits/mplot3d/tests/__pycache__",
-    "research/venv/lib/python3.12/site-packages/mpl_toolkits/mplot3d/__pycache__/proj3d.cpython-312.pyc",
+    "knowledge-base/log.md.tmp.23153.b15617a090a8",
+    "knowledge-base/backlog.md.tmp.23153.fdefe18e4cbf",
+    "knowledge-base/wiki/entities/multi-start.md",
+    "knowledge-base/wiki/entities/t0-calibration.md",
+    "knowledge-base/backlog.md.tmp.23153.efd110b7c642",
+    "knowledge-base/log.md.tmp.23153.90ff70ed62aa",
+    "knowledge-base/index.md.tmp.23153.27ec4354e0e2",
+    "knowledge-base/wiki/entities/sa-empirical-observations.md",
+    "knowledge-base/wiki/entities/sa-empirical-observations.md.tmp.23153.1475ec43c3b5",
+    "knowledge-base/wiki/entities/multi-start.md.tmp.23153.1d671d16840e",
+    "knowledge-base/wiki/entities/simulated-annealing.md",
+    "knowledge-base/log.md.tmp.23153.9b0ff3af9d4a",
+    "knowledge-base/index.md.tmp.23153.f91ecd92c49f",
+    "knowledge-base/wiki/entities/t0-calibration.md.tmp.23153.ba4033018049",
+    "knowledge-base/wiki/entities/simulated-annealing.md.tmp.23153.176907e5b1b2",
+    "knowledge-base/wiki/entities/hill-climbing.md",
+    "knowledge-base/wiki/entities/fitness-function-sbox.md",
+    "knowledge-base/raw/info/Metaheuristic - Wikipedia.md",
+    "knowledge-base/index.md",
+    "knowledge-base/raw/info/Metaheuristic - Wikipedia 1.md",
+    "raw/info/Metaheuristic - Wikipedia.md",
+    "raw/info/Metaheuristic - Wikipedia 1.md",
+    "knowledge-base/raw/Mathematical optimization.md",
+    "knowledge-base/wiki/entities/higher-order-differential-attack.md",
+    "raw/Mathematical optimization.md",
+    "Clippings/Mathematical optimization.md",
+    "knowledge-base/wiki/entities/kuznechik-sbox.md",
+    "knowledge-base/wiki/entities/linear-approximation-table.md",
+    "knowledge-base/wiki/entities/linear-cryptanalysis.md",
+    "knowledge-base/wiki/entities/mobius-transform.md",
+    "knowledge-base/wiki/entities/nonlinearity.md",
+    "knowledge-base/wiki/entities/reference-sboxes-metrics.md",
+    "knowledge-base/wiki/entities/annihilator.md",
     "research/venv/lib/python3.12/site-packages/matplotlib/mpl-data/sample_data/logo2.png",
     "research/venv/lib/python3.12/site-packages/matplotlib/mpl-data/sample_data/grace_hopper.jpg",
     "research/venv/lib/python3.12/site-packages/matplotlib/mpl-data/sample_data/Minduka_Present_Blue_Pack.png",
@@ -275,28 +298,6 @@
     "research/venv/lib/python3.12/site-packages/matplotlib/mpl-data/images/subplots.png",
     "research/venv/lib/python3.12/site-packages/numpy-2.4.4.dist-info/licenses/numpy/_core/src/npysort/x86-simd-sort/LICENSE.md",
     "research/venv/lib/python3.12/site-packages/numpy-2.4.4.dist-info/licenses/numpy/random/src/splitmix64/LICENSE.md",
-    "research/venv/lib/python3.12/site-packages/numpy-2.4.4.dist-info/licenses/numpy/random/src/sfc64/LICENSE.md",
-    "research/venv/lib/python3.12/site-packages/numpy-2.4.4.dist-info/licenses/numpy/random/src/philox/LICENSE.md",
-    "research/venv/lib/python3.12/site-packages/numpy-2.4.4.dist-info/licenses/numpy/random/src/pcg64/LICENSE.md",
-    "research/venv/lib/python3.12/site-packages/numpy-2.4.4.dist-info/licenses/numpy/random/src/mt19937/LICENSE.md",
-    "research/venv/lib/python3.12/site-packages/numpy-2.4.4.dist-info/licenses/numpy/random/src/distributions/LICENSE.md",
-    "research/venv/lib/python3.12/site-packages/numpy-2.4.4.dist-info/licenses/numpy/fft/pocketfft/LICENSE.md",
-    "research/venv/lib/python3.12/site-packages/numpy-2.4.4.dist-info/licenses/numpy/random/LICENSE.md",
-    "research/venv/lib/python3.12/site-packages/numpy/random/LICENSE.md",
-    "research/venv/lib/python3.12/site-packages/pyparsing/ai/best_practices.md",
-    "knowledge-base/log.md",
-    "knowledge-base/wiki/entities/reference-sboxes-metrics.md",
-    "knowledge-base/wiki/entities/linear-cryptanalysis.md",
-    "knowledge-base/wiki/entities/mobius-transform.md",
-    "knowledge-base/index.md",
-    "knowledge-base/wiki/entities/attacks-overview.md",
-    "knowledge-base/wiki/entities/algebraic-attack.md",
-    "knowledge-base/wiki/entities/higher-order-differential-attack.md",
-    "knowledge-base/wiki/entities/differential-cryptanalysis.md",
-    "knowledge-base/wiki/entities/sm4-sbox.md",
-    "knowledge-base/wiki/entities/algebraic-immunity.md",
-    "knowledge-base/wiki/entities/algebraic-degree.md",
-    "knowledge-base/wiki/entities/aes-sbox.md",
-    "knowledge-base/wiki/entities/camellia-sbox.md"
+    "research/venv/lib/python3.12/site-packages/numpy-2.4.4.dist-info/licenses/numpy/random/src/sfc64/LICENSE.md"
   ]
 }
