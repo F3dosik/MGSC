@@ -6,4 +6,9 @@ knowledge-base/raw/coursework-2/ldc_tutorial.pdf
 
 # Compiled Go binaries
 /mgsc
-/research/research
+/MGSC
+
+# Research artefacts (not source)
+research/venv/
+research/out.csv
+research/*.csv

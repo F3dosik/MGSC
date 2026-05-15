@@ -7,7 +7,7 @@ import (
 	"github.com/F3dosik/MGSC/sbox"
 )
 
-type RunResult struct {
+type RunResultHC struct {
 	Table [256]uint8
 	Cost  float64
 	NL    int
@@ -15,8 +15,8 @@ type RunResult struct {
 
 // ParallelMultiStart запускает numRuns независимых HC параллельно.
 // Возвращает все результаты — выбирать лучший снаружи.
-func ParallelMultiStart(numRuns, maxIter int, cf CostFunc) []RunResult {
-	results := make([]RunResult, numRuns)
+func ParallelMultiStart(numRuns, maxIter int, cf CostFunc) []RunResultSA {
+	results := make([]RunResultSA, numRuns)
 	var wg sync.WaitGroup
 
 	for idx := 0; idx < numRuns; idx++ {
@@ -36,7 +36,7 @@ func ParallelMultiStart(numRuns, maxIter int, cf CostFunc) []RunResult {
 			state := NewSAState(table, cf)
 			HillClimb(state, maxIter)
 
-			results[i] = RunResult{
+			results[i] = RunResultSA{
 				Table: state.Table(),
 				Cost:  state.Cost(),
 				NL:    sbox.New(state.Table()).Nonlinearity(),
