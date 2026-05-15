@@ -1,0 +1,9 @@
+# External material not redistributable in public repo
+knowledge-base/raw/coursework-2/ldc_tutorial.pdf
+
+# Profiling output
+*.prof
+
+# Compiled Go binaries
+/mgsc
+/research/research
