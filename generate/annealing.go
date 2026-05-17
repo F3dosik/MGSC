@@ -16,6 +16,10 @@ type Schedule struct {
 	Tmin    float64 // нижний порог T
 	Etarget float64 // целевая cost; ранний выход при E(S*)<= Etarget
 	MaxIter int     // hard limit на общее число swap'ов
+
+	// OnTick вызывается в начале каждого температурного уровня.
+	// iter — суммарное число swap'ов, accepted/acceptedUp — накопленные счётчики.
+	OnTick func(iter int, T, cost, bestCost float64, accepted, acceptedUp int)
 }
 
 // Result — итог одного запуска SA.
@@ -39,6 +43,9 @@ func SA(state *SAState, sch Schedule) Result {
 	accepted, acceptedUp := 0, 0
 
 	for T > sch.Tmin && totalIter < sch.MaxIter {
+		if sch.OnTick != nil {
+			sch.OnTick(totalIter, T, state.Cost(), bestCost, accepted, acceptedUp)
+		}
 		for k := 0; k < sch.M; k++ {
 			i, j, oldCost := state.RandomSwap()
 			delta := state.Cost() - oldCost

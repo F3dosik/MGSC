@@ -18,8 +18,8 @@
 
 ## База знаний — приоритет 1 (нужно для генератора)
 
-- [ ] Ingest **Clark-Jacob-Stepney 2005** — специфика SA для S-блоков
-      Acceptance: страница `wiki/entities/sa-for-sboxes.md` со специфической мутацией (swap), их cost-функцией $\sum ||W|-X|^R$, расписанием температуры использованным в работе, экспериментальными результатами NL для $n=8$. Общая теория SA уже есть в [[simulated-annealing]].
+- [x] Ingest **Clark-Jacob-Stepney 2005** — специфика SA для S-блоков
+      ✓ Страница [[sa-for-sboxes]] создана (2026-05-17). Включает: мутацию swap, CJS cost, двухфазный SA+HC, результаты литературы, причину стены NL=100→112.
 - [ ] Ingest источника по **бент-функциям** (Токарева 2011)
       Acceptance: страница `wiki/entities/bent-functions.md` — что это, теорема о существовании только при чётном $n$, потолок $N = 2^{n-1} - 2^{n/2-1}$, несбалансированность → почему недостижимо для биективных S-блоков.
 
@@ -41,12 +41,20 @@
 
 ## Код — приоритет 1 (генератор)
 
+- [x] Реализовать `generate/annealing.go` — simulated annealing с настраиваемым расписанием
+      ✓ Реализовано (2026-05-15). SA, EstimateT0, ParallelMultiStartSA, OnTick callback для диагностики.
+- [x] Реализовать базовые cost-функции в `generate/cost.go`
+      ✓ ClarkJacobStepneyNL, MinMaxWalsh, ThresholdNL реализованы и проверены экспериментами (2026-05-17).
+
+- [ ] **[СЛЕДУЮЩИЙ ШАГ]** Реализовать двухфазный **SA + Hill Climbing по NL**
+      Контекст: single SA застревает на NL=100. CJS 2005 и практика показывают: SA находит стартовую точку NL≈104-108, HC доводит до NL=112. См. [[sa-for-sboxes]].
+      Acceptance: функция `SAHillClimb(sch Schedule, cf CostFunc, hcIter int) RunResult`; возвращает S-блок с NL≥112 хотя бы в 1 запуске из 16; multi-start параллельный.
+
 - [ ] `generate/generator.go` — общий интерфейс генератора + случайная биективная подстановка (Fisher-Yates) как baseline
       Acceptance: интерфейс `Generator { Generate() *sbox.SBox }`; baseline `RandomGenerator` проходит тест на биективность.
-- [ ] Реализовать **fitness-функцию** из [[fitness-function-sbox]]
-      Acceptance: `fitness(*sbox.SBox, weights, targetAI) float64`; покрыта тестом — для AES должно быть `fitness == 0`; для случайной — высокое значение. Подобрать веса $w_1..w_4$ так, чтобы вклад каждой метрики был сопоставим.
-- [ ] Реализовать `generate/annealing.go` — simulated annealing с настраиваемым расписанием
-      Acceptance: мутация = swap двух элементов; настраиваемые $T_0$, скорость остывания, число итераций; критерий остановки $F = 0$ или лимит итераций.
+- [ ] Реализовать полную **fitness-функцию** из тезисов (все 4 метрики)
+      Контекст: MinMaxWalsh и ThresholdNL только для NL. Нужна `ThresholdFull(w1,w2,w3,w4)` по формуле из [[fitness-function-sbox]].
+      Acceptance: для AES — cost=0; для random — высокое значение; покрыта тестом.
 - [ ] Реализовать `verify/verify.go` — валидация: биективность, отсутствие фиксированных точек, пороги по 4 метрикам
       Acceptance: верификатор отвергает заведомо плохие подстановки и принимает AES/SM4/Camellia.
 - [ ] `main.go` — CLI с подкомандами: `generate`, `analyze <json>`, `verify <json>`

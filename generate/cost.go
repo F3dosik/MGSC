@@ -25,6 +25,27 @@ func ClarkJacobStepneyNL(X, R int) CostFunc {
 	}
 }
 
+// MinMaxWalsh минимизирует максимальный Walsh-коэффициент по всем компонентным
+// функциям: cost = 256 − 2·NL(S). Эквивалентно максимизации NL без порога —
+// градиент есть всегда, включая область NL > 112.
+func MinMaxWalsh() CostFunc {
+	return func(s [256]uint8) float64 {
+		return float64(256 - 2*sbox.New(s).Nonlinearity())
+	}
+}
+
+// ThresholdNL штрафует только нарушение порога нелинейности:
+// cost = max(0, target − NL(S)). Минимум = 0 при NL ≥ target.
+func ThresholdNL(target int) CostFunc {
+	return func(s [256]uint8) float64 {
+		nl := sbox.New(s).Nonlinearity()
+		if nl >= target {
+			return 0
+		}
+		return float64(target - nl)
+	}
+}
+
 func absInt32(x int32) int32 {
 	if x < 0 {
 		return -x
