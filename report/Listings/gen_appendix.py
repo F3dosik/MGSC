@@ -5,6 +5,7 @@ import subprocess
 from pathlib import Path
 
 HERE = Path(__file__).parent
+SRC = HERE / "_src"
 OUT = HERE / "appendix.html"
 
 SECTIONS = [
@@ -59,9 +60,9 @@ h3 { font-size: 11pt; margin-top: 1.2em; font-weight: bold; page-break-after: av
 """
 
 
-def pygmentize_fragment(path: Path) -> str:
+def pygmentize_fragment(filename: str) -> str:
     return subprocess.run(
-        ["pygmentize", "-f", "html", "-O", "linenos=false", "-l", "go", str(path)],
+        ["pygmentize", "-f", "html", "-O", "linenos=false", "-l", "go", str(SRC / filename)],
         capture_output=True, text=True, check=True,
     ).stdout
 
@@ -88,7 +89,7 @@ def build() -> str:
         parts.append(f'<h2>{section_title}</h2>')
         for sub_title, filename in files:
             parts.append(f'<h3>{sub_title}</h3>')
-            parts.append(pygmentize_fragment(HERE / filename))
+            parts.append(pygmentize_fragment(filename))
     parts.append('</body></html>')
     return '\n'.join(parts)
 
