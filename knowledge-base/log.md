@@ -6,6 +6,13 @@
 
 ---
 
+## [2026-05-21] meta | E-10: SA из AES; оптимизация nlFast; финальная картина серии
+- E-10: 16 параллельных SA из AES (MinMaxWalsh, T₀≈18) → NL=112 все 16 запусков, BestTable=AES. 64M swap-попыток, ни одного NL>112. AES — изолированный локальный оптимум.
+- Обнаружена критическая проблема производительности: `sbox.New(s).Nonlinearity()` вызывал `computeMetrics()`, который вычислял Walsh И ANF (Möbius) для 255 компонент на каждый swap → двойная работа + огромное давление GC.
+- Исправления: (1) `sbox/analysis.go` — разделены `computeNonlinearity()` и `computeAlgebraicDeg()`, `Nonlinearity()` больше не вычисляет ANF; (2) `generate/cost.go` — добавлен `nlFast()`: Walsh-преобразование без аллокаций (стековый массив), MinMaxWalsh и ThresholdNL переведены на `nlFast`.
+- Финальный вывод серии E-01..E-10: два изолированных бассейна — NL=100 (из random) и NL=112 (из AES). Переход невозможен через случайные swap за разумное число итераций.
+- Обновлена [[sa-experiments]] (E-10 завершён, добавлена итоговая таблица).
+
 ## [2026-05-21] meta | Реализован CLI инструмента (main.go с verify/analyze/generate)
 - Реализован `main.go` в корне — единый CLI с тремя подкомандами. Используется только стандартная библиотека (пакет `flag`).
 - `verify [-profile aes|relaxed|research] [-json] <file.json>` — оборачивает `verify.Verify`, exit=0 при PASS, exit=1 при FAIL.

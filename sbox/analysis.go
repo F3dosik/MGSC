@@ -1,24 +1,24 @@
 package sbox
 
-// computeMetrics вычисляет агрегированные метрики за один проход
-// по всем 255 компонентным функциям.
-// Заполняет: nonlinearity, algebraicDeg.
-func (sb *SBox) computeMetrics() {
-	minNL := int(^uint(0) >> 1) // MaxInt
-	maxDeg := 0
-
+// computeNonlinearity вычисляет минимальную нелинейность по Walsh-спектру.
+func (sb *SBox) computeNonlinearity() {
+	minNL := int(^uint(0) >> 1)
 	for b := 1; b < 256; b++ {
-		f := sb.Component(uint8(b))
-
-		if nl := f.Nonlinearity(); nl < minNL {
+		if nl := sb.Component(uint8(b)).Nonlinearity(); nl < minNL {
 			minNL = nl
 		}
-		if deg := f.AlgebraicDegree(); deg > maxDeg {
+	}
+	sb.nonlinearity = &minNL
+}
+
+// computeAlgebraicDeg вычисляет максимальную алгебраическую степень через АНФ.
+func (sb *SBox) computeAlgebraicDeg() {
+	maxDeg := 0
+	for b := 1; b < 256; b++ {
+		if deg := sb.Component(uint8(b)).AlgebraicDegree(); deg > maxDeg {
 			maxDeg = deg
 		}
 	}
-
-	sb.nonlinearity = &minNL
 	sb.algebraicDeg = &maxDeg
 }
 
@@ -26,7 +26,7 @@ func (sb *SBox) computeMetrics() {
 // минимальную нелинейность среди всех 255 компонентных функций.
 func (sb *SBox) Nonlinearity() int {
 	if sb.nonlinearity == nil {
-		sb.computeMetrics()
+		sb.computeNonlinearity()
 	}
 	return *sb.nonlinearity
 }
@@ -35,7 +35,7 @@ func (sb *SBox) Nonlinearity() int {
 // максимальную степень среди всех 255 компонентных функций.
 func (sb *SBox) AlgebraicDegree() int {
 	if sb.algebraicDeg == nil {
-		sb.computeMetrics()
+		sb.computeAlgebraicDeg()
 	}
 	return *sb.algebraicDeg
 }
