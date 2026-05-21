@@ -1,0 +1,165 @@
+%%%%%%%%%%%%%%%%% Оформление ГОСТА%%%%%%%%%%%%%%%%%
+
+% Все параметры указаны в ГОСТЕ на 2021, а именно:
+
+% Шрифт для курсовой Times New Roman, размер – 14 пт.
+\setdefaultlanguage[spelling=modern]{russian}
+    \setotherlanguage{english}
+    
+\setmonofont{Times New Roman}
+\setmainfont{Times New Roman} 
+\setromanfont{Times New Roman} 
+\newfontfamily\cyrillicfont{Times New Roman}
+
+
+
+
+% шрифт для URL-ссылок
+\urlstyle{same} 
+
+% Междустрочный интервал должен быть равен 1.5 сантиметра.
+\linespread{1.5} % междустрочный интервал
+
+
+% Каждая новая строка должна начинаться с отступа равного 1.25 сантиметра.
+\setlength{\parindent}{1.25cm} % отступ для абзаца
+\setlist[itemize]{
+    leftmargin=0pt,       % Общий отступ всего списка
+    labelindent=1.25cm,   % Отступ МЕТКИ от левого края
+    itemindent=*,         % Текст начинается под меткой
+    labelwidth=1em,       % Ширина области для метки
+    labelsep=0.5em,       % Расстояние между меткой и текстом                % Убираем лишние пробелы
+    itemsep=0pt,
+    topsep=0pt,
+    parsep=0pt,
+    partopsep=0pt,
+    itemsep=0em
+    % label=-
+}
+\setlist[enumerate]{
+    leftmargin=0pt,       % Общий отступ всего списка
+    labelindent=1.25cm,   % Отступ МЕТКИ от левого края
+    itemindent=*,         % Текст начинается под меткой
+    labelwidth=1em,       % Ширина области для метки
+    labelsep=0.5em,       % Расстояние между меткой и текстом
+    itemsep=0pt,          % Убираем лишние пробелы
+    topsep=0pt,
+    parsep=0pt,
+    partopsep=0pt,
+    % label=-
+}
+
+% Текст, который является основным содержанием, должен быть выровнен по ширине по умолчанию включен из-за типа документа в main.tex
+
+
+%%%%%%%%%%%%%%%%%% Дополнения %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Путь до папки с изображениями
+\graphicspath{ {./Images/} }
+
+% Внесение titlepage в учёт счётчика страниц
+\makeatletter
+\renewenvironment{titlepage} {
+	\thispagestyle{empty}
+}
+
+
+% Цвет гиперссылок и цитирования
+\usepackage{hyperref} 
+ \hypersetup{ 
+     colorlinks=true, 
+     linkcolor=black, 
+     filecolor=blue, 
+     citecolor = black,       
+     urlcolor=blue, 
+     }
+    
+\usepackage{caption}
+
+\renewcommand{\figurename}{Рисунок}
+
+\captionsetup[figure]{
+  format=plain,
+  justification=centering,
+  labelsep=none,
+  name=Рисунок
+}
+
+\makeatletter
+\renewcommand{\fnum@figure}{\figurename~\thefigure~–\ } % ← добавлен \ после тире
+\makeatother
+% Нумерация рисунков
+\counterwithout{figure}{section}
+
+% Нумерация таблиц
+\counterwithout{table}{section}
+
+\counterwithout{equation}{section}
+
+% шрифт для листингов с лигатурами
+\setmonofont{FiraCode-Regular.otf}[
+	SizeFeatures={Size=10},
+	Path = Settings/,
+	Contextuals=Alternate
+]
+
+% Перенос текста при переполнении
+\emergencystretch=25pt
+
+
+% настройка подсветки кода и окружения для листингов
+%\usemintedstyle{colorful} % делает подсветку для кода
+\newenvironment{code}{\captionsetup{type=listing}}{}
+
+% \numberwithin{equation}{section} % если хочешь так же и уравнения нумеровать
+\newtheorem{theorem}{Теорема}
+\newtheorem{statement}[theorem]{Утверждение}
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{corollary}{Следствие}
+\newtheorem{proposition}[theorem]{Предложение}
+\renewcommand{\proofname}{Доказательство}
+\newtheorem{example}{Пример}
+\newtheorem{definition}{Определение}
+% ------------------------------------------
+% Настройка выравнивания заголовков
+% ------------------------------------------
+\usepackage{titlesec}
+
+% Заголовок 1 уровня — по центру, размер шрифта 14pt
+\titleformat{\section}
+  {\normalfont\bfseries\fontsize{14}{16}\selectfont\centering}
+  {\thesection}{1em}{}
+
+% Заголовок 2 уровня — по центру, размер шрифта 14pt
+\titleformat{\subsection}
+  {\normalfont\bfseries\fontsize{14}{16}\selectfont\centering}
+  {\thesubsection}{1em}{}
+
+% Заголовок 3 уровня — по ширине с отступом 1.25 см, размер шрифта 14pt
+\titleformat{\subsubsection}
+  {\normalfont\bfseries\fontsize{14}{16}\selectfont}
+  {\thesubsubsection}{1em}{}
+\titlespacing*{\subsubsection}{1.25cm}{3.25ex plus 1ex minus .2ex}{0pt}
+\bibpunct{[}{]}{,}{a}{,}{,}
+
+\usepackage{tocloft}
+
+% Добавляем точки ко всем уровням
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}     % секции
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}  % подсекции
+\renewcommand{\cftsubsubsecleader}{\cftdotfill{\cftdotsep}} % подподсекции
+
+
+% Убираем полужирность у заголовков разделов
+\renewcommand{\cftsecfont}{\normalfont}
+\renewcommand{\cftsubsecfont}{\normalfont}
+\renewcommand{\cftsubsubsecfont}{\normalfont}
+
+% Убираем стандартные вертикальные отступы между разделами
+\setlength{\cftbeforesecskip}{0.5em}        % одинаковый отступ перед section
+\setlength{\cftbeforesubsecskip}{0.5em}     % одинаковый отступ перед subsection
+\setlength{\cftbeforesubsubsecskip}{0.5em}
+
+\renewcommand{\cftsecpagefont}{\normalfont}
+\renewcommand{\cftsubsecpagefont}{\normalfont}
+\renewcommand{\cftsubsubsecpagefont}{\normalfont}

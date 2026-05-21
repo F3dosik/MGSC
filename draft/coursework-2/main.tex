@@ -1,0 +1,141 @@
+% Самодостаточная сборка курсовой для Overleaf.
+%
+% ВНИМАНИЕ: компилятор — XeLaTeX (не pdfLaTeX).
+% На Overleaf: Menu → Settings → Compiler → XeLaTeX.
+%
+% Стиль воспроизводит шаблон Stulk3, использованный в 1-й курсовой:
+%   — Times New Roman 14pt;
+%   — полуторный интервал;
+%   — отступ красной строки 1.25 см;
+%   — поля 3 / 1.5 / 2 / 2 см;
+%   — заголовки центрированы, жирные, нумерация через пробел;
+%   — нумерация рисунков и таблиц вида «1.1», «2.3» (по разделам);
+%   — подписи «Рисунок 1 – …», «Таблица 1 – …»;
+%   — номер страницы внизу по центру.
+
+\documentclass[14pt, a4paper]{extarticle}
+
+% ── Языковая поддержка (polyglossia вместо babel — требует XeLaTeX) ──
+\usepackage{polyglossia}
+\setdefaultlanguage[spelling=modern]{russian}
+\setotherlanguage{english}
+
+% ── Шрифты ──────────────────────────────────────────────────────────
+% Times New Roman доступен на Overleaf из коробки.
+\setmainfont{Times New Roman}
+\setromanfont{Times New Roman}
+\setmonofont{Times New Roman}
+\newfontfamily\cyrillicfont{Times New Roman}
+
+% ── Поля ────────────────────────────────────────────────────────────
+\usepackage[left=3cm, right=1.5cm, top=2cm, bottom=2cm]{geometry}
+
+% ── Полуторный интервал и отступ красной строки ─────────────────────
+\linespread{1.5}
+\setlength{\parindent}{1.25cm}
+
+% ── Математика ──────────────────────────────────────────────────────
+\usepackage{amsmath, amssymb, amsthm}
+
+% ── Прочее ──────────────────────────────────────────────────────────
+\usepackage{indentfirst}      % красная строка и после заголовка
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{pdfpages}         % для подключения титульника PDF
+\usepackage{chngcntr}         % \counterwithin
+\usepackage{titlesec}         % формат заголовков
+\usepackage{caption}          % формат подписей
+\usepackage{url}
+\usepackage{hyperref}
+
+\graphicspath{ {./Images/} }
+
+\hypersetup{
+    colorlinks = true,
+    linkcolor  = black,
+    filecolor  = blue,
+    citecolor  = black,
+    urlcolor   = blue,
+}
+
+\urlstyle{same}
+
+% ── Нумерация рисунков и таблиц по разделам ─────────────────────────
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+
+% ── Подписи: «Рисунок 1 – …», «Таблица 1 – …» ───────────────────────
+\captionsetup{labelsep=endash, font=normalsize, justification=centering}
+
+% ── Номер страницы внизу по центру ──────────────────────────────────
+\pagestyle{plain}
+
+% ── Заголовки: центрированные, жирные ───────────────────────────────
+\titleformat{\section}
+  {\centering\normalfont\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\centering\normalfont\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+  {\centering\normalfont\bfseries\itshape}{\thesubsubsection}{1em}{}
+
+% Безномерные «ВВЕДЕНИЕ», «ВЫВОДЫ», «ЗАКЛЮЧЕНИЕ», «СПИСОК …»
+\titleformat{name=\section, numberless}
+  {\centering\normalfont\bfseries}{}{0pt}{}
+\titleformat{name=\subsection, numberless}
+  {\centering\normalfont\bfseries}{}{0pt}{}
+
+% ── Теоремные среды ─────────────────────────────────────────────────
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+
+% polyglossia не локализует "Proof" автоматически — делаем вручную.
+\renewcommand{\proofname}{Доказательство}
+
+% ── Окружение псевдокода ────────────────────────────────────────────
+% Используется в content.tex как:
+%   \begin{algorithm}{Название}\hfill\\
+%       строки псевдокода со \\ в конце
+%   \end{algorithm}
+\newenvironment{algorithm}[1]
+  {%
+    \par\medskip\noindent\textbf{Алгоритм (#1).}%
+    \par\nopagebreak\smallskip
+    \begin{flushleft}\setlength{\parindent}{0pt}%
+  }
+  {%
+    \end{flushleft}\par\medskip
+  }
+
+% ── Макрос \image из шаблона Stulk3 (на случай переноса рисунков) ───
+% \image{имя.png}{Подпись}{доля_от_textwidth}
+\newcommand{\image}[3]{%
+  \begin{figure}[!htb]
+    \centering
+    \includegraphics[width=#3\textwidth]{#1}
+    \caption{#2}
+  \end{figure}
+}
+
+% Формат нумерации в \thebibliography — точка вместо квадратных скобок.
+\providecommand{\bibnumfmt}[1]{#1.}
+
+\begin{document}
+
+% ── Титульный лист ──────────────────────────────────────────────────
+% Когда подготовишь PDF титульника (например, titlepage.pdf
+% в корне проекта), раскомментируй:
+% \includepdf[pages=-]{titlepage.pdf}
+
+% ── Содержание ──────────────────────────────────────────────────────
+% Раскомментируй, когда нужно автоматическое оглавление:
+% \renewcommand{\contentsname}{\centerline{\bfseries СОДЕРЖАНИЕ}}
+% \tableofcontents
+% \newpage
+
+\include{content}
+
+\end{document}

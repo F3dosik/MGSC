@@ -15,6 +15,13 @@
 - **Итог серии:** одиночный SA не выходит за NL=100 ни с одной из 5 опробованных cost-функций. Лучшая — MinMaxWalsh (NL=100, нулевая дисперсия). Параметры MDPI 2022 не воспроизводимы нашей реализацией.
 - Обновлена [[sa-experiments]] (E-07..E-09c завершены, сводная таблица, E-10 заблокирован).
 
+## [2026-05-18] meta | Создана структура LaTeX-проекта 2-й курсовой в `report/`
+- Скопирован полный шаблон Stulk3 из `knowledge-base/raw/coursework-1` (main.tex, Settings/packages.tex, Settings/format.tex, Settings/listings.tex, Settings/FiraCode-Regular.otf, macros.tex, tocpage.tex, refs.tex, bibpage.tex, TitlePages/). Компилятор — XeLaTeX (polyglossia, Times New Roman 14pt, ГОСТ-2021).
+- Контент перенесён из `draft/coursework-2/content.tex` (1701 строка, 6 глав). `draft/coursework-2/` оставлен как backup.
+- Точечные правки шаблона: в `Settings/format.tex` переименован `\newtheorem{theorem}{Утверждение}` → `Теорема`, добавлен `\newtheorem{statement}[theorem]{Утверждение}` (теперь оба окружения доступны). В `macros.tex` добавлено пользовательское окружение `\newenvironment{algorithm}[1]` (использовалось в content.tex для псевдокода HC/SA).
+- В `content.tex` перед `СПИСКОМ ИСТОЧНИКОВ` вставлены каркасы: гл. 7 «Экспериментальные результаты» (7.1–7.7 + ВЫВОДЫ — план зафиксирован в memory `project-chapter-7-experiments`), ЗАКЛЮЧЕНИЕ, СПИСОК СОКРАЩЁННЫХ ОБОЗНАЧЕНИЙ. После списка источников — ПРИЛОЖЕНИЕ А (под `\codefromfile{...}` для Go-модулей).
+- Прежний `report/` (мой pdflatex-каркас прошлой сессии) удалён.
+
 ## [2026-05-17] meta | Создан журнал экспериментов sa-experiments
 - Создана [[sa-experiments]] — сквозной журнал всех SA-экспериментов с E-01 по E-10.
 - Завершённые: E-01 (HC baseline), E-02 (CJS X=24 баг), E-03 (CJS X=0 неправильный ландшафт), E-04 (MinMaxWalsh короткое расписание), E-05 (MinMaxWalsh полное), E-06 (ThresholdNL полное). Лучший результат одиночного SA: NL=100.

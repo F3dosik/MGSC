@@ -1,0 +1,52 @@
+% Список пользовательских команд 
+
+%%%%%%%%%%%% \image %%%%%%%%%%%%%%%%%%
+
+% \image {Имя изображения.расширение}{Подпись к рисунку}{Скейл Изображения}
+
+\newcommand{\image}[3]{
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=#3\textwidth]{#1}
+	\caption{#2}
+\end{figure}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%% \codefromfile  %%%%%%%%%%%%%%%%%%
+
+% \codefromfile {Имя файла}
+
+\newcommand{\codefromfile}[2]{
+\begin{code}
+	\inputminted[breaklines=true, framesep=10pt, fontsize=\footnotesize, firstline=1,]{#2}{Listings/#1}
+\end{code}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%% Окружение algorithm %%%%%%%%%%%%%%%%%
+
+% Используется в content.tex как:
+%   \begin{algorithm}{Название}\hfill\\
+%       строки псевдокода со \\ в конце
+%   \end{algorithm}
+
+\newenvironment{algorithm}[1]
+  {%
+    \par\medskip\noindent\textbf{Алгоритм (#1).}%
+    \par\nopagebreak\smallskip
+    \begin{flushleft}\setlength{\parindent}{0pt}%
+  }
+  {%
+    \end{flushleft}\par\medskip
+  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
