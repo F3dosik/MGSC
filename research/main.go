@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math/rand/v2"
 	"sort"
+	"strings"
 
 	"github.com/F3dosik/MGSC/generate"
 	"github.com/F3dosik/MGSC/sbox"
@@ -18,70 +19,73 @@ func randomTable() [256]uint8 {
 	return table
 }
 
-func runHC(label string, startTable [256]uint8, cf generate.CostFunc, maxIter int) int {
-	state := generate.NewSAState(startTable, cf)
-	bestNL := sbox.New(startTable).Nonlinearity()
-	for iter := 0; iter < maxIter; iter++ {
-		i, j, oldCost := state.RandomSwap()
-		if state.Cost() >= oldCost {
-			state.Swap(i, j)
-		}
-		if nl := sbox.New(state.Table()).Nonlinearity(); nl > bestNL {
-			bestNL = nl
-		}
-	}
-	fmt.Printf("HC (%s): NL=%d\n", label, bestNL)
-	return bestNL
-}
-
-func main() {
-	const numRuns = 16
-	cf := generate.MinMaxWalsh()
-
-	// Калибруем T0 один раз (стабильно для random start)
-	calibState := generate.NewSAState(randomTable(), cf)
-	t0 := generate.EstimateT0(calibState, 1000, 0.8)
-	fmt.Printf("T0=%.2e\n\n", t0)
-
-	sch := generate.Schedule{
-		T0:      t0,
-		Alpha:   0.99,
-		M:       5000,
-		Tmin:    0.01,
-		Etarget: 0,
-		MaxIter: 10_000_000,
-	}
-
-	fmt.Printf("=== E-08: multi-start SA, N=%d ===\n\n", numRuns)
-	results := generate.ParallelMultiStartSA(numRuns, sch, cf)
-
-	// Распределение NL
-	nls := make([]int, numRuns)
+func printNLDistribution(results []generate.RunResultSA) {
+	nls := make([]int, len(results))
 	for i, r := range results {
 		nls[i] = r.NL
 	}
 	sort.Ints(nls)
 
-	nlCounts := map[int]int{}
+	counts := map[int]int{}
 	for _, nl := range nls {
-		nlCounts[nl]++
+		counts[nl]++
 	}
-	fmt.Println("NL distribution:")
 	for nl := nls[0]; nl <= nls[len(nls)-1]; nl += 2 {
-		if c, ok := nlCounts[nl]; ok {
-			fmt.Printf("  NL=%d: %d/%d\n", nl, c, numRuns)
+		if c, ok := counts[nl]; ok {
+			fmt.Printf("  NL=%-3d %s %d/%d\n", nl, strings.Repeat("█", c), c, len(results))
 		}
 	}
+}
 
-	// Лучший результат
+func main() {
+	const numRuns = 16
+	cf := generate.ClarkJacobStepneyNL(36, 4)
+
+	// T0 калибруем под нашу реализацию — T0=20000 из MDPI 2022 несовместим
+	// с нашим масштабом cost (3e10 vs их ожидаемые единицы тысяч)
+	calibState := generate.NewSAState(randomTable(), cf)
+	t0 := generate.EstimateT0(calibState, 1000, 0.8)
+
+	sch := generate.Schedule{
+		T0:      t0,
+		Alpha:   0.99, // замедляем: α=0.95 давало только ~298K итераций
+		M:       5000, // как в E-05 для fair-сравнения с MinMaxWalsh (~3.7M итераций)
+		Tmin:    0.01,
+		Etarget: 0,
+		MaxIter: 50_000_000,
+	}
+
+	fmt.Println("=== E-09c: CJS(X=36, R=4, α=0.99, M=5000) — fair сравнение с E-05 ===")
+	fmt.Printf("T0=%.2e  α=%.2f  M=%d  N=%d\n\n", sch.T0, sch.Alpha, sch.M, numRuns)
+
+	results := generate.ParallelMultiStartSA(numRuns, sch, cf)
+
+	fmt.Println("NL distribution:")
+	printNLDistribution(results)
+
 	best := results[0]
 	for _, r := range results[1:] {
 		if r.NL > best.NL {
 			best = r
 		}
 	}
-	fmt.Printf("\nBest SA: NL=%d\n\n", best.NL)
+	fmt.Printf("\nBest NL: %d\n", best.NL)
 
-	// HC из лучшего
-	runHC("из best SA", best.Table, cf, 500_000)
+	// Сколько запусков дали NL >= 104?
+	above104 := 0
+	for _, r := range results {
+		if r.NL >= 104 {
+			above104++
+		}
+	}
+	fmt.Printf("NL>=104: %d/%d (литература: ~56%%)\n", above104, numRuns)
+
+	// CJS cost для AES S-блока как ориентир
+	aes, err := sbox.LoadFromFile("testdata/aes_sbox.json")
+	if err != nil {
+		panic(err)
+	}
+
+	probe := generate.NewSAState(aes.Table(), cf)
+	fmt.Printf("\nCJS cost для AES: %.2e\n", probe.Cost())
 }

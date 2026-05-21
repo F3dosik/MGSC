@@ -46,9 +46,9 @@
 - [x] Реализовать базовые cost-функции в `generate/cost.go`
       ✓ ClarkJacobStepneyNL, MinMaxWalsh, ThresholdNL реализованы и проверены экспериментами (2026-05-17).
 
-- [ ] **[СЛЕДУЮЩИЙ ШАГ]** Реализовать двухфазный **SA + Hill Climbing по NL**
-      Контекст: single SA застревает на NL=100. CJS 2005 и практика показывают: SA находит стартовую точку NL≈104-108, HC доводит до NL=112. См. [[sa-for-sboxes]].
-      Acceptance: функция `SAHillClimb(sch Schedule, cf CostFunc, hcIter int) RunResult`; возвращает S-блок с NL≥112 хотя бы в 1 запуске из 16; multi-start параллельный.
+- [ ] **[ЗАБЛОКИРОВАН]** Двухфазный **SA + Hill Climbing по NL**
+      Статус (2026-05-21): E-07..E-09c показали — SA не выходит за NL=100 ни с одной опробованной cost-функцией. HC из NL=100 не даёт улучшений (E-07). Двухфазный подход требует SA-старта ≥102, который мы не получили.
+      Разблокируется: при нахождении cost-функции с правильным ландшафтом, дающей SA NL≥102. См. [[sa-experiments#E-10]].
 
 - [ ] `generate/generator.go` — общий интерфейс генератора + случайная биективная подстановка (Fisher-Yates) как baseline
       Acceptance: интерфейс `Generator { Generate() *sbox.SBox }`; baseline `RandomGenerator` проходит тест на биективность.
