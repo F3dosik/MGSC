@@ -19,11 +19,11 @@
 
 %%%%%%%%%% \codefromfile  %%%%%%%%%%%%%%%%%%
 
-% \codefromfile {Имя файла}
+% \codefromfile {Имя файла} {Язык listings, например Go или Python}
 
 \newcommand{\codefromfile}[2]{
 \begin{code}
-	\inputminted[breaklines=true, framesep=10pt, fontsize=\footnotesize, firstline=1,]{#2}{Listings/#1}
+	\lstinputlisting[language=#2]{Listings/#1}
 \end{code}
 }
 

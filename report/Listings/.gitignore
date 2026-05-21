@@ -1,0 +1,10 @@
+# Промежуточные артефакты сборки приложения через gen_appendix.py
+appendix.html
+appendix.pdf
+
+# Локальные пробы LaTeX-сборки приложения (xelatex/pdflatex)
+appendix_only.tex
+appendix_only.aux
+appendix_only.log
+appendix_only.out
+appendix_only.toc

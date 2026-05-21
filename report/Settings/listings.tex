@@ -14,7 +14,7 @@
   breakatwhitespace=true,               % разрыв строк только при пробеле
   breaklines=true,                      % перенос строк
   captionpos=b,                         % месторасположение подписи bottom
-  commentstyle=\color{mygreen},         % цвет комментария (не распростроняется на кириллицу)
+  commentstyle=\color{mygreen},         % цвет комментария
   keepspaces=true,                      %
   keywordstyle=\color{blue},            %
   showspaces=false,                     % отключена замена пробелов на нижние подчеркивания
@@ -23,11 +23,35 @@
   stepnumber=1,                         %
   stringstyle=\color{mymauve},          % цвет литералов
   tabsize=4,                            %
+  extendedchars=true,                   % разрешить юникод-символы (для кириллицы в комментариях)
 }
 
 % Подписи к листингам на русском языке.
 \renewcommand\lstlistingname{Листинг}
 \renewcommand\lstlistlistingname{Листинги}
+
+
+% Определение языка Go для listings (по умолчанию его нет).
+\lstdefinelanguage{Go}{
+  keywords={break, default, func, interface, select, case, defer, go, map,
+            struct, chan, else, goto, package, switch, const, fallthrough,
+            if, range, type, continue, for, import, return, var},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={true, false, iota, nil, append, cap, close, complex, copy,
+              delete, imag, len, make, new, panic, print, println, real,
+              recover, error, bool, byte, rune, string, int, int8, int16,
+              int32, int64, uint, uint8, uint16, uint32, uint64, uintptr,
+              float32, float64, complex64, complex128},
+  ndkeywordstyle=\color{blue},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{mygreen}\itshape,
+  morestring=[b]',
+  morestring=[b]",
+  morestring=[s]{`}{`},
+  stringstyle=\color{mymauve},
+}
 
 
 
