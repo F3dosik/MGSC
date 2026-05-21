@@ -38,3 +38,25 @@ func LoadFromFile(path string) (*SBox, error) {
 
 	return FromSlice(flat)
 }
+
+// SaveToFile сохраняет S-блок в JSON-файл в формате, совместимом с LoadFromFile:
+// объект с полями "name" и "sbox" (матрица 16×16).
+func SaveToFile(sb *SBox, path, name string) error {
+	t := sb.Table()
+	rows := make([][]uint8, 16)
+	for i := 0; i < 16; i++ {
+		row := make([]uint8, 16)
+		copy(row, t[i*16:(i+1)*16])
+		rows[i] = row
+	}
+
+	data, err := json.MarshalIndent(sboxJSON{Name: name, SBox: rows}, "", "  ")
+	if err != nil {
+		return fmt.Errorf("sbox: ошибка сериализации JSON: %w", err)
+	}
+
+	if err := os.WriteFile(path, data, 0o644); err != nil {
+		return fmt.Errorf("sbox: не удалось записать %s: %w", path, err)
+	}
+	return nil
+}
